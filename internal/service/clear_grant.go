@@ -7,7 +7,10 @@ import (
 	errors "github.com/pbrpc/connect-errors"
 
 	"buf.build/gen/go/authaas/identity-data/protocolbuffers/go/identity/data"
-	principal "github.com/authaas/identity-pgx-go"
+	store "github.com/authaas/data-connect-go"
+	"github.com/authaas/identity-data-bindings-connect-go/identity/data/dataconnect"
+	identity "github.com/authaas/identity-connect-go"
+	"github.com/authaas/identity-pgx-go/principal"
 	ops "github.com/authaas/identity-schema-postgres-bindings-pgx-go"
 )
 
@@ -17,7 +20,7 @@ import (
 func (s *Server) ClearGrant(ctx context.Context, req *data.ClearGrantRequest) (*data.ClearGrantResponse, error) {
 	id, err := principal.Key(req.GetPrincipal())
 	if err != nil {
-		return nil, invalidKey(ctx)
+		return nil, identity.InvalidPrincipal(ctx)
 	}
 
 	rows, err := s.queries.ClearGrant(ctx, ops.ClearGrantParams{
@@ -25,7 +28,7 @@ func (s *Server) ClearGrant(ctx context.Context, req *data.ClearGrantRequest) (*
 		GrantHash: req.GetGrantHash().GetBytes(),
 	})
 	if err != nil {
-		return nil, storeFailed(ctx, "clear the grant", err)
+		return nil, store.StoreFailed(ctx, dataconnect.ServiceName, "clear the grant", err)
 	}
 
 	if rows == 0 {

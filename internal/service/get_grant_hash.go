@@ -10,7 +10,10 @@ import (
 	errors "github.com/pbrpc/connect-errors"
 
 	"buf.build/gen/go/authaas/identity-data/protocolbuffers/go/identity/data"
-	principal "github.com/authaas/identity-pgx-go"
+	store "github.com/authaas/data-connect-go"
+	"github.com/authaas/identity-data-bindings-connect-go/identity/data/dataconnect"
+	identity "github.com/authaas/identity-connect-go"
+	"github.com/authaas/identity-pgx-go/principal"
 )
 
 // GetGrantHash answers with the digest of the identity's outstanding grant,
@@ -20,7 +23,7 @@ func (s *Server) GetGrantHash(
 ) (*data.GetGrantHashResponse, error) {
 	id, err := principal.Key(req.GetPrincipal())
 	if err != nil {
-		return nil, invalidKey(ctx)
+		return nil, identity.InvalidPrincipal(ctx)
 	}
 
 	digest, err := s.queries.GetGrantHash(ctx, id)
@@ -29,7 +32,7 @@ func (s *Server) GetGrantHash(
 	}
 
 	if err != nil {
-		return nil, storeFailed(ctx, "read the grant hash", err)
+		return nil, store.StoreFailed(ctx, dataconnect.ServiceName, "read the grant hash", err)
 	}
 
 	return data.GetGrantHashResponse_builder{GrantHash: grantHash(digest)}.Build(), nil

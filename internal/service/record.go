@@ -5,7 +5,7 @@ import (
 	"buf.build/gen/go/authaas/identity-data/protocolbuffers/go/identity/data"
 	"buf.build/gen/go/authaas/identity/protocolbuffers/go/identity"
 	"buf.build/gen/go/authaas/token/protocolbuffers/go/token"
-	principal "github.com/authaas/identity-pgx-go"
+	"github.com/authaas/identity-pgx-go/principal"
 	ops "github.com/authaas/identity-schema-postgres-bindings-pgx-go"
 )
 
