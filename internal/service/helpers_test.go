@@ -4,7 +4,6 @@ package service
 import (
 	"context"
 	"errors"
-	"log/slog"
 	"testing"
 
 	"connectrpc.com/connect/v2"
@@ -63,7 +62,7 @@ func (p pingerStub) Ping(context.Context) error { return p.err }
 
 // newServer builds a Server on the stubs.
 func newServer(queries *queriesStub, db pingerStub) *Server {
-	return New(slog.New(slog.DiscardHandler), queries, db, "db:5432")
+	return New(queries, db, "db:5432")
 }
 
 // principalOf builds the request key for id.
