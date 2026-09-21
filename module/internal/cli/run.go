@@ -23,10 +23,10 @@ import (
 	pbrpcotel "github.com/pbrpc/otel"
 	svc "github.com/pbrpc/service"
 
-	"github.com/authaas/identity-data-service-postgres-pgx-connect-go/identity/data/dataconnect"
+	"github.com/authaas/identity-data-bindings-connect-go/identity/data/dataconnect"
 	"github.com/authaas/identity-data-service-postgres-pgx-connect-go/internal/postgres"
 	"github.com/authaas/identity-data-service-postgres-pgx-connect-go/internal/service"
-	ops "github.com/authaas/identity-operations-postgres-pgx-go"
+	ops "github.com/authaas/identity-schema-postgres-bindings-pgx-go"
 )
 
 // cleanupTimeout bounds stopping the server and flushing telemetry, together

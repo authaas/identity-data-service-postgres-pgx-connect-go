@@ -8,7 +8,7 @@ import (
 	"connectrpc.com/connect/v2"
 	"github.com/jackc/pgx/v5"
 
-	ops "github.com/authaas/identity-operations-postgres-pgx-go"
+	ops "github.com/authaas/identity-schema-postgres-bindings-pgx-go"
 )
 
 func TestGet(t *testing.T) {

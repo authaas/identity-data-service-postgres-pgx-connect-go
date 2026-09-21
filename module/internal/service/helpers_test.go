@@ -13,7 +13,7 @@ import (
 	"buf.build/gen/go/authaas/identity-data/protocolbuffers/go/identity/data"
 	"buf.build/gen/go/authaas/identity/protocolbuffers/go/identity"
 	"buf.build/gen/go/authaas/token/protocolbuffers/go/token"
-	ops "github.com/authaas/identity-operations-postgres-pgx-go"
+	ops "github.com/authaas/identity-schema-postgres-bindings-pgx-go"
 )
 
 const (

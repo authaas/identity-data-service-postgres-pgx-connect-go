@@ -6,7 +6,7 @@ import (
 
 	"git.sonicoriginal.software/logger"
 
-	"github.com/authaas/identity-data-service-postgres-pgx-connect-go/identity/data/dataconnect"
+	"github.com/authaas/identity-data-bindings-connect-go/identity/data/dataconnect"
 )
 
 // Server serves identity.data.Service over the generated statements.

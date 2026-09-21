@@ -1,6 +1,4 @@
 [tools]
-buf = "latest"
 cargo-binstall = "latest"
 "cargo:cocogitto" = "latest"
 go = "latest"
-"go:connectrpc.com/connect/v2/cmd/protoc-gen-connect-go" = "2.0.0-alpha.1"

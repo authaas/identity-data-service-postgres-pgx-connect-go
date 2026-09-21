@@ -7,7 +7,7 @@ import (
 	errors "github.com/pbrpc/connect-errors"
 
 	"buf.build/gen/go/authaas/identity-data/protocolbuffers/go/identity/data"
-	ops "github.com/authaas/identity-operations-postgres-pgx-go"
+	ops "github.com/authaas/identity-schema-postgres-bindings-pgx-go"
 )
 
 // ClearGrant clears the outstanding grant while its digest still equals the

@@ -8,7 +8,8 @@ require (
 	buf.build/gen/go/authaas/token/protocolbuffers/go v1.36.12-20260920174249-1b86e4d5c13a.2
 	connectrpc.com/connect/v2 v2.0.0-alpha.1
 	git.sonicoriginal.software/logger v0.1.0
-	github.com/authaas/identity-operations-postgres-pgx-go v0.1.1
+	github.com/authaas/identity-data-bindings-connect-go v0.1.1
+	github.com/authaas/identity-schema-postgres-bindings-pgx-go v0.3.0
 	github.com/caarlos0/env/v11 v11.4.1
 	github.com/grpcd/connect-client v0.9.0
 	github.com/jackc/pgx/v5 v5.11.0

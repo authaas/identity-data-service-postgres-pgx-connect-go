@@ -22,14 +22,8 @@ FROM deps AS stage
 COPY . .
 
 
-FROM base AS gen
-COPY buf.gen.yaml .
-RUN buf generate
-
-
 FROM stage AS build
 ARG artifact_name
-COPY --from=gen ${module_path} ${module_path}
 RUN CGO_ENABLED=0 go build -v -ldflags="-w -s" -o ${artifact_name} ${module_path}
 
 

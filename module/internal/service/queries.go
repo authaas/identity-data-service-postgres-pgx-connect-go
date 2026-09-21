@@ -6,7 +6,7 @@ import (
 
 	"github.com/jackc/pgx/v5/pgtype"
 
-	ops "github.com/authaas/identity-operations-postgres-pgx-go"
+	ops "github.com/authaas/identity-schema-postgres-bindings-pgx-go"
 )
 
 // Queries is what the handlers run: the generated statements, one per RPC.
