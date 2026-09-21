@@ -23,8 +23,8 @@ import (
 	pbrpcotel "github.com/pbrpc/otel"
 	svc "github.com/pbrpc/service"
 
-	"github.com/authaas/identity-data-bindings-connect-go/identity/data/dataconnect"
 	postgres "github.com/authaas/data-postgres-pgx-go"
+	"github.com/authaas/identity-data-bindings-connect-go/identity/data/dataconnect"
 	"github.com/authaas/identity-data-service-postgres-pgx-connect-go/internal/service"
 	ops "github.com/authaas/identity-schema-postgres-bindings-pgx-go"
 )
@@ -71,7 +71,7 @@ func Run() int {
 	}
 	defer db.Close()
 
-	server := service.New(log, ops.New(db), db, db.Address())
+	server := service.New(ops.New(db), db, db.Address())
 
 	grpcdConfig, err := env.ParseAs[grpcdclient.Configuration]()
 	if err != nil {
