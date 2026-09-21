@@ -13,6 +13,7 @@ import (
 	"buf.build/gen/go/authaas/identity-data/protocolbuffers/go/identity/data"
 	"buf.build/gen/go/authaas/identity/protocolbuffers/go/identity"
 	"buf.build/gen/go/authaas/token/protocolbuffers/go/token"
+	principal "github.com/authaas/identity-pgx-go"
 	ops "github.com/authaas/identity-schema-postgres-bindings-pgx-go"
 )
 
@@ -98,7 +99,7 @@ func clearGrantRequest(id string, b []byte) *data.ClearGrantRequest {
 func storedKey(t *testing.T) pgtype.UUID {
 	t.Helper()
 
-	id, err := key(principalOf(principalID))
+	id, err := principal.Key(principalOf(principalID))
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}

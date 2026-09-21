@@ -7,11 +7,12 @@ import (
 	errors "github.com/pbrpc/connect-errors"
 
 	"buf.build/gen/go/authaas/identity-data/protocolbuffers/go/identity/data"
+	principal "github.com/authaas/identity-pgx-go"
 )
 
 // Delete removes the identity.
 func (s *Server) Delete(ctx context.Context, req *data.DeleteRequest) (*data.DeleteResponse, error) {
-	id, err := key(req.GetPrincipal())
+	id, err := principal.Key(req.GetPrincipal())
 	if err != nil {
 		return nil, invalidKey(ctx)
 	}

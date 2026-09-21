@@ -7,6 +7,7 @@ import (
 	errors "github.com/pbrpc/connect-errors"
 
 	"buf.build/gen/go/authaas/identity-data/protocolbuffers/go/identity/data"
+	principal "github.com/authaas/identity-pgx-go"
 	ops "github.com/authaas/identity-schema-postgres-bindings-pgx-go"
 )
 
@@ -14,7 +15,7 @@ import (
 // one presented. The compare and the write are one statement; zero rows
 // means no row satisfied it, and nothing was written.
 func (s *Server) ClearGrant(ctx context.Context, req *data.ClearGrantRequest) (*data.ClearGrantResponse, error) {
-	id, err := key(req.GetPrincipal())
+	id, err := principal.Key(req.GetPrincipal())
 	if err != nil {
 		return nil, invalidKey(ctx)
 	}

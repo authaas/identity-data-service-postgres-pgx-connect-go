@@ -24,7 +24,7 @@ import (
 	svc "github.com/pbrpc/service"
 
 	"github.com/authaas/identity-data-bindings-connect-go/identity/data/dataconnect"
-	"github.com/authaas/identity-data-service-postgres-pgx-connect-go/internal/postgres"
+	postgres "github.com/authaas/data-postgres-pgx-go"
 	"github.com/authaas/identity-data-service-postgres-pgx-connect-go/internal/service"
 	ops "github.com/authaas/identity-schema-postgres-bindings-pgx-go"
 )

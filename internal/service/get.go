@@ -10,11 +10,12 @@ import (
 	errors "github.com/pbrpc/connect-errors"
 
 	"buf.build/gen/go/authaas/identity-data/protocolbuffers/go/identity/data"
+	principal "github.com/authaas/identity-pgx-go"
 )
 
 // Get answers with the identity's record.
 func (s *Server) Get(ctx context.Context, req *data.GetRequest) (*data.GetResponse, error) {
-	id, err := key(req.GetPrincipal())
+	id, err := principal.Key(req.GetPrincipal())
 	if err != nil {
 		return nil, invalidKey(ctx)
 	}

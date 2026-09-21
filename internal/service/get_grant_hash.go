@@ -10,6 +10,7 @@ import (
 	errors "github.com/pbrpc/connect-errors"
 
 	"buf.build/gen/go/authaas/identity-data/protocolbuffers/go/identity/data"
+	principal "github.com/authaas/identity-pgx-go"
 )
 
 // GetGrantHash answers with the digest of the identity's outstanding grant,
@@ -17,7 +18,7 @@ import (
 func (s *Server) GetGrantHash(
 	ctx context.Context, req *data.GetGrantHashRequest,
 ) (*data.GetGrantHashResponse, error) {
-	id, err := key(req.GetPrincipal())
+	id, err := principal.Key(req.GetPrincipal())
 	if err != nil {
 		return nil, invalidKey(ctx)
 	}

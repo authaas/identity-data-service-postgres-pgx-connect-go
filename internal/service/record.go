@@ -5,18 +5,19 @@ import (
 	"buf.build/gen/go/authaas/identity-data/protocolbuffers/go/identity/data"
 	"buf.build/gen/go/authaas/identity/protocolbuffers/go/identity"
 	"buf.build/gen/go/authaas/token/protocolbuffers/go/token"
+	principal "github.com/authaas/identity-pgx-go"
 	ops "github.com/authaas/identity-schema-postgres-bindings-pgx-go"
 )
 
 // record answers with the contract's record for a stored row.
 func record(row ops.Principal) (*data.Record, error) {
-	principal, err := principal(row.ID)
+	key, err := principal.FromKey(row.ID)
 	if err != nil {
 		return nil, err
 	}
 
 	return data.Record_builder{
-		Principal:             principal,
+		Principal:             key,
 		Profile:               identity.Profile_builder{Name: row.Name, DisplayName: row.DisplayName}.Build(),
 		CreationDate:          row.CreationDate,
 		LastAuthenticatedDate: row.LastAuthenticatedDate,
