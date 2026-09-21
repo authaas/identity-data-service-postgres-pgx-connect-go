@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.2.0 - 2026-09-21
+#### Features
+- remove the unused logger - (f0ac5f1) - Nathan Blair
+#### Bug Fixes
+- remove remaining log references - (4a5bbf1) - Nathan Blair
+
+- - -
+
 ## 0.1.0 - 2026-09-21
 #### Features
 - remove errors - (9e103ca) - Nathan Blair
